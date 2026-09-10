@@ -122,4 +122,110 @@ export const portfolioInfo = {
       layout: "wide",
     },
   ],
+
+    /*
+   * ======================================================
+   * CATEGORÍAS DEL PORTAFOLIO
+   * ======================================================
+   */
+
+  workCategories: [
+    "All",
+    "Football",
+    "Athletes",
+    "Fitness",
+    "Portraits",
+    "Commercial",
+  ],
+
+  /*
+   * ======================================================
+   * GALERÍA GENERAL
+   *
+   * Cada fotografía tiene:
+   *
+   * category  → filtro al que pertenece
+   * layout    → tamaño dentro de la composición
+   * position  → permite controlar el encuadre
+   *
+   * Esto nos permite diseñar cada fotografía
+   * individualmente sin modificar el componente.
+   * ======================================================
+   */
+
+  workGallery: [
+    {
+      id: 1,
+      title: "Matchday",
+      category: "Football",
+      image: "/images/gallery/football-01.jpg",
+      layout: "large",
+      position: "center",
+    },
+
+    {
+      id: 2,
+      title: "The Player",
+      category: "Athletes",
+      image: "/images/gallery/player-01.jpg",
+      layout: "portrait",
+      position: "center",
+    },
+
+    {
+      id: 3,
+      title: "90 Minutes",
+      category: "Football",
+      image: "/images/gallery/football-02.jpg",
+      layout: "medium",
+      position: "center",
+    },
+
+    {
+      id: 4,
+      title: "Strength",
+      category: "Fitness",
+      image: "/images/gallery/fitness-01.jpg",
+      layout: "square",
+      position: "center",
+    },
+
+    {
+      id: 5,
+      title: "Portrait Study",
+      category: "Portraits",
+      image: "/images/gallery/portrait-01.jpg",
+      layout: "portrait",
+      position: "center",
+    },
+
+    {
+      id: 6,
+      title: "Game Emotion",
+      category: "Football",
+      image: "/images/gallery/football-03.jpg",
+      layout: "large",
+      position: "center",
+    },
+
+    {
+      id: 7,
+      title: "Performance",
+      category: "Commercial",
+      image: "/images/gallery/commercial-01.jpg",
+      layout: "medium",
+      position: "center",
+    },
+
+    {
+      id: 8,
+      title: "Training",
+      category: "Fitness",
+      image: "/images/gallery/fitness-02.jpg",
+      layout: "wide",
+      position: "center",
+    },
+  ],
 };
+
+

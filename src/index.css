@@ -885,6 +885,616 @@ button {
 }
 
 /* ======================================================
+   WORK PAGE
+====================================================== */
+
+.work-page {
+  width: 100%;
+
+  background: var(--black);
+}
+
+/* ======================================================
+   WORK HERO
+====================================================== */
+
+.work-hero {
+  min-height: 85vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding:
+    160px
+    4vw
+    70px;
+}
+
+.work-hero__label {
+  margin-bottom: auto;
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.work-hero h1 {
+  font-size:
+    clamp(
+      70px,
+      11vw,
+      190px
+    );
+
+  line-height: 0.78;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.work-hero h1 span {
+  color: var(--gray);
+}
+
+.work-hero__bottom {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+
+  margin-top: 60px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.work-hero__bottom p {
+  max-width: 250px;
+
+  line-height: 1.5;
+}
+
+/* ======================================================
+   FILTER
+====================================================== */
+
+.work-filter {
+  position: sticky;
+
+  z-index: 20;
+
+  top: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 40px;
+
+  min-height: 85px;
+
+  padding:
+    0
+    4vw;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  background:
+    rgba(
+      7,
+      7,
+      7,
+      0.92
+    );
+
+  backdrop-filter:
+    blur(15px);
+}
+
+.work-filter__label,
+.work-filter__count {
+  color: var(--gray);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.work-filter__categories {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap:
+    12px
+    28px;
+}
+
+.work-filter__button {
+  position: relative;
+
+  padding:
+    8px
+    0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--gray);
+
+  cursor: pointer;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+
+  transition:
+    color 0.3s ease;
+}
+
+.work-filter__button:hover,
+.work-filter__button.is-active {
+  color: var(--white);
+}
+
+.work-filter__button::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 2px;
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--white);
+
+  transform:
+    scaleX(0);
+
+  transform-origin: right;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.work-filter__button.is-active::after {
+  transform:
+    scaleX(1);
+
+  transform-origin: left;
+}
+
+/* ======================================================
+   GALLERY
+====================================================== */
+
+.work-gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(12, 1fr);
+
+  gap:
+    140px
+    20px;
+
+  padding:
+    130px
+    4vw
+    180px;
+}
+
+.work-gallery__item {
+  position: relative;
+}
+
+/* ---------- LAYOUTS ---------- */
+
+.work-gallery__item--large {
+  grid-column:
+    span 8;
+}
+
+.work-gallery__item--portrait {
+  grid-column:
+    span 4;
+}
+
+.work-gallery__item--medium {
+  grid-column:
+    span 6;
+}
+
+.work-gallery__item--square {
+  grid-column:
+    span 5;
+}
+
+.work-gallery__item--wide {
+  grid-column:
+    3 / span 10;
+}
+
+/* ======================================================
+   IMAGE
+====================================================== */
+
+.work-gallery__media {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: #111;
+}
+
+.work-gallery__item--large
+.work-gallery__media {
+  aspect-ratio:
+    16 / 10;
+}
+
+.work-gallery__item--portrait
+.work-gallery__media {
+  aspect-ratio:
+    4 / 5;
+}
+
+.work-gallery__item--medium
+.work-gallery__media {
+  aspect-ratio:
+    3 / 2;
+}
+
+.work-gallery__item--square
+.work-gallery__media {
+  aspect-ratio:
+    1 / 1;
+}
+
+.work-gallery__item--wide
+.work-gallery__media {
+  aspect-ratio:
+    16 / 8;
+}
+
+.work-gallery__media img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform
+    0.8s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+/* ======================================================
+   HOVER
+====================================================== */
+
+.work-gallery__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0
+    );
+
+  transition:
+    background
+    0.45s ease;
+}
+
+.work-gallery__hover {
+  position: absolute;
+
+  inset:
+    auto
+    20px
+    20px
+    20px;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  opacity: 0;
+
+  transform:
+    translateY(10px);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.work-gallery__media:hover img {
+  transform:
+    scale(1.035);
+}
+
+.work-gallery__media:hover
+.work-gallery__overlay {
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.22
+    );
+}
+
+.work-gallery__media:hover
+.work-gallery__hover {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* ======================================================
+   META
+====================================================== */
+
+.work-gallery__meta {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 20px;
+
+  margin-top: 14px;
+}
+
+.work-gallery__meta h3 {
+  font-size:
+    clamp(
+      18px,
+      1.8vw,
+      30px
+    );
+
+  font-weight: 500;
+
+  letter-spacing:
+    -0.035em;
+
+  text-transform:
+    uppercase;
+}
+
+.work-gallery__meta span {
+  color:
+    var(--gray);
+
+  font-size: 9px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.12em;
+}
+
+/* ======================================================
+   WORK TABLET
+====================================================== */
+
+@media (max-width: 1024px) {
+
+  .work-hero {
+    padding:
+      140px
+      30px
+      60px;
+  }
+
+  .work-filter {
+    padding:
+      0
+      30px;
+  }
+
+  .work-gallery {
+    padding:
+      100px
+      30px
+      140px;
+
+    gap:
+      100px
+      16px;
+  }
+
+  .work-gallery__item--large {
+    grid-column:
+      span 8;
+  }
+
+  .work-gallery__item--portrait {
+    grid-column:
+      span 4;
+  }
+
+  .work-gallery__item--medium,
+  .work-gallery__item--square {
+    grid-column:
+      span 6;
+  }
+}
+
+/* ======================================================
+   WORK MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .work-hero {
+    min-height: 75vh;
+
+    padding:
+      120px
+      20px
+      45px;
+  }
+
+  .work-hero h1 {
+    font-size:
+      clamp(
+        56px,
+        18vw,
+        100px
+      );
+
+    line-height: 0.83;
+  }
+
+  .work-hero__bottom {
+    margin-top: 40px;
+  }
+
+  /*
+   * En móvil el filtro deja de utilizar
+   * tres columnas y se vuelve desplazable.
+   */
+
+  .work-filter {
+    display: block;
+
+    min-height: auto;
+
+    padding:
+      18px
+      20px;
+  }
+
+  .work-filter__label,
+  .work-filter__count {
+    display: none;
+  }
+
+  .work-filter__categories {
+    justify-content:
+      flex-start;
+
+    flex-wrap: nowrap;
+
+    gap: 24px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .work-filter__categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-filter__button {
+    flex-shrink: 0;
+
+    font-size: 9px;
+  }
+
+  /*
+   * En móvil utilizamos una sola columna.
+   */
+
+  .work-gallery {
+    display: flex;
+
+    flex-direction:
+      column;
+
+    gap: 75px;
+
+    padding:
+      75px
+      20px
+      110px;
+  }
+
+  .work-gallery__item {
+    width: 100%;
+  }
+
+  /*
+   * No dependemos de hover en pantallas táctiles.
+   */
+
+  .work-gallery__hover {
+    display: none;
+  }
+
+  .work-gallery__meta h3 {
+    font-size:
+      26px;
+  }
+}
+
+/* ======================================================
    TEMPORARY PAGES
 ====================================================== */
 
@@ -1029,6 +1639,8 @@ button {
 
     line-height: 0.98;
   }
+
+  
 
   /* TEMP PAGES */
 

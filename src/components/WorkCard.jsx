@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function WorkCard({ work }) {
   return (
     <article
@@ -21,8 +23,8 @@ function WorkCard({ work }) {
           FOTOGRAFÍA
       ================================================== */}
 
-      <a
-        href="/work"
+      <Link
+        to="/work"
         className="work-card__media"
         aria-label={`View ${work.title}`}
       >
@@ -42,7 +44,7 @@ function WorkCard({ work }) {
             View Work
           </span>
         </div>
-      </a>
+      </Link>
 
       {/* ==================================================
           INFORMACIÓN
