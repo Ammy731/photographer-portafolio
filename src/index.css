@@ -1,0 +1,1088 @@
+:root {
+  --black: #070707;
+  --white: #f4f4f0;
+  --gray: #aaa9a5;
+  --line: rgba(255, 255, 255, 0.18);
+
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+  background: var(--black);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--black);
+  color: var(--white);
+
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+/* ======================================================
+   NAVBAR
+====================================================== */
+
+.navbar {
+  position: absolute;
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 4vw;
+
+  color: var(--white);
+}
+
+.navbar__brand {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.navbar__brand span {
+  margin-top: 5px;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+
+  gap: 36px;
+
+  font-size: 12px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.navbar__menu a {
+  position: relative;
+}
+
+.navbar__menu a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--white);
+
+  transition: width 0.35s ease;
+}
+
+.navbar__menu a:hover::after {
+  width: 100%;
+}
+
+.navbar__mobile-button {
+  display: none;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* ======================================================
+   HERO
+====================================================== */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+  min-height: 700px;
+
+  overflow: hidden;
+}
+
+/* ---------- HERO IMAGE ---------- */
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.03);
+
+  will-change: transform;
+}
+
+/* ---------- OVERLAY ---------- */
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.08) 35%,
+      rgba(0, 0, 0, 0.15) 55%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+/* ---------- HERO CONTENT ---------- */
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding:
+    140px
+    4vw
+    42px;
+
+  will-change: transform, opacity;
+}
+
+/* ---------- HERO TOP INFO ---------- */
+
+.hero__eyebrow {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+}
+
+/* ---------- HERO TITLE ---------- */
+
+.hero__title {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: clamp(70px, 11.5vw, 200px);
+  font-weight: 700;
+
+  line-height: 0.76;
+  letter-spacing: -0.075em;
+
+  text-transform: uppercase;
+}
+
+.hero__title-line {
+  display: block;
+
+  overflow: hidden;
+
+  padding-bottom: 0.08em;
+}
+
+.hero__title-line--right {
+  align-self: flex-end;
+}
+
+.hero__title-inner {
+  display: block;
+
+  will-change: transform;
+}
+
+/* ---------- HERO BOTTOM ---------- */
+
+.hero__bottom {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    auto;
+
+  align-items: end;
+
+  margin-top: 50px;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- CATEGORIES ---------- */
+
+.hero__categories {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  line-height: 1.35;
+}
+
+.hero__categories span {
+  display: block;
+}
+
+/* ---------- EXPLORE ---------- */
+
+.hero__explore {
+  position: relative;
+
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  font-size: 10px;
+
+  transition: opacity 0.3s ease;
+}
+
+.hero__explore:hover {
+  opacity: 0.65;
+}
+
+.hero__arrow {
+  display: inline-block;
+
+  font-size: 18px;
+
+  transition: transform 0.3s ease;
+}
+
+.hero__explore:hover .hero__arrow {
+  transform: translateY(5px);
+}
+
+/* ---------- YEAR ---------- */
+
+.hero__year {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 3px;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ======================================================
+   INTRO / SELECTED WORK INTRO
+====================================================== */
+
+.intro {
+  min-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 100px 4vw;
+}
+
+.section-label {
+  margin-bottom: 70px;
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intro h2 {
+  max-width: 1500px;
+
+  font-size: clamp(42px, 7.2vw, 120px);
+
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+
+  font-weight: 500;
+}
+
+.intro h2 em {
+  color: var(--gray);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+/* ======================================================
+   SELECTED WORK
+====================================================== */
+
+.selected-work {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    40px
+    4vw
+    160px;
+}
+
+/* ---------- SECTION HEADING ---------- */
+
+.selected-work__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+
+  margin-bottom: 120px;
+
+  border-bottom: 1px solid var(--line);
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ======================================================
+   WORK GRID
+====================================================== */
+
+.selected-work__grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(12, 1fr);
+
+  column-gap: 20px;
+  row-gap: 180px;
+}
+
+/* ======================================================
+   WORK CARD
+====================================================== */
+
+.work-card {
+  position: relative;
+}
+
+/* ---------- CARD 1 / WIDE ---------- */
+
+.work-card--wide {
+  grid-column:
+    1 / span 9;
+}
+
+/*
+ * Alternamos los trabajos wide.
+ *
+ * De esta forma no quedan todos alineados
+ * exactamente de la misma manera.
+ */
+
+.work-card--wide:nth-child(even) {
+  grid-column:
+    4 / span 9;
+}
+
+/* ---------- PORTRAIT ---------- */
+
+.work-card--portrait {
+  grid-column:
+    7 / span 5;
+}
+
+/* ---------- MEDIUM ---------- */
+
+.work-card--medium {
+  grid-column:
+    2 / span 7;
+}
+
+/* ======================================================
+   CARD HEADER
+====================================================== */
+
+.work-card__header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.work-card__number {
+  color: var(--gray);
+}
+
+.work-card__category {
+  color: var(--white);
+}
+
+/* ======================================================
+   IMAGE
+====================================================== */
+
+.work-card__media {
+  display: block;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+/*
+ * Este contenedor funciona como máscara.
+ */
+
+.work-card__image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
+/* Formato horizontal */
+
+.work-card--wide
+.work-card__image-wrapper {
+  aspect-ratio: 16 / 9;
+}
+
+/* Formato vertical */
+
+.work-card--portrait
+.work-card__image-wrapper {
+  aspect-ratio: 4 / 5;
+}
+
+/* Formato intermedio */
+
+.work-card--medium
+.work-card__image-wrapper {
+  aspect-ratio: 3 / 2;
+}
+
+.work-card__image-wrapper img {
+  width: 100%;
+  height: 106%;
+
+  display: block;
+
+  object-fit: cover;
+
+  /*
+   * El 106% nos da un pequeño margen
+   * para el movimiento de parallax.
+   */
+
+  transform: scale(1.01);
+
+  transition:
+    transform 0.8s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  will-change: transform;
+}
+
+/* ======================================================
+   IMAGE OVERLAY
+====================================================== */
+
+.work-card__image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    rgba(0, 0, 0, 0);
+
+  transition:
+    background 0.5s ease;
+
+  pointer-events: none;
+}
+
+/*
+ * Oscurecemos muy ligeramente la imagen
+ * cuando el usuario coloca el mouse encima.
+ */
+
+.work-card__media:hover
+.work-card__image-overlay {
+  background:
+    rgba(0, 0, 0, 0.18);
+}
+
+.work-card__media:hover
+.work-card__image-wrapper img {
+  transform: scale(1.035);
+}
+
+/* ======================================================
+   VIEW WORK
+====================================================== */
+
+.work-card__view {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -40%);
+
+  opacity: 0;
+
+  color: white;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+
+  pointer-events: none;
+}
+
+.work-card__media:hover
+.work-card__view {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+/* ======================================================
+   CARD INFORMATION
+====================================================== */
+
+.work-card__info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 30px;
+
+  margin-top: 20px;
+}
+
+.work-card__info h3 {
+  font-size:
+    clamp(
+      28px,
+      3vw,
+      54px
+    );
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+}
+
+.work-card__info p {
+  margin-top: 9px;
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.work-card__year {
+  color: var(--gray);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+}
+
+/* ======================================================
+   VIEW ALL WORK
+====================================================== */
+
+.selected-work__footer {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 160px;
+}
+
+.selected-work__all {
+  width: min(
+    320px,
+    100%
+  );
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    18px
+    0;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  transition:
+    opacity 0.3s ease;
+}
+
+.selected-work__all:hover {
+  opacity: 0.6;
+}
+
+/* ======================================================
+   SELECTED WORK — TABLET
+====================================================== */
+
+@media (max-width: 1024px) {
+
+  .selected-work {
+    padding:
+      40px
+      30px
+      130px;
+  }
+
+  .selected-work__heading {
+    margin-bottom: 90px;
+  }
+
+  .selected-work__grid {
+    column-gap: 16px;
+    row-gap: 130px;
+  }
+
+  .work-card--wide {
+    grid-column:
+      1 / span 10;
+  }
+
+  .work-card--wide:nth-child(even) {
+    grid-column:
+      3 / span 10;
+  }
+
+  .work-card--portrait {
+    grid-column:
+      6 / span 6;
+  }
+
+  .work-card--medium {
+    grid-column:
+      1 / span 8;
+  }
+}
+
+/* ======================================================
+   SELECTED WORK — MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .selected-work {
+    padding:
+      20px
+      20px
+      100px;
+  }
+
+  .selected-work__heading {
+    margin-bottom: 65px;
+
+    font-size: 8px;
+  }
+
+  /*
+   * En móvil abandonamos la composición
+   * de 12 columnas.
+   *
+   * Todas las fotografías utilizan
+   * todo el ancho disponible.
+   */
+
+  .selected-work__grid {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 90px;
+  }
+
+  .work-card--wide,
+  .work-card--wide:nth-child(even),
+  .work-card--portrait,
+  .work-card--medium {
+    width: 100%;
+  }
+
+  /*
+   * Evitamos verticales demasiado largas
+   * en dispositivos pequeños.
+   */
+
+  .work-card--portrait
+  .work-card__image-wrapper {
+    aspect-ratio: 4 / 5;
+  }
+
+  .work-card__header {
+    font-size: 8px;
+  }
+
+  .work-card__info {
+    margin-top: 14px;
+  }
+
+  .work-card__info h3 {
+    font-size:
+      clamp(
+        30px,
+        9vw,
+        45px
+      );
+  }
+
+  .work-card__info p,
+  .work-card__year {
+    font-size: 8px;
+  }
+
+  /*
+   * El hover tiene poca utilidad en móvil,
+   * porque normalmente usamos touch.
+   */
+
+  .work-card__view {
+    display: none;
+  }
+
+  .selected-work__footer {
+    margin-top: 100px;
+  }
+
+  .selected-work__all {
+    width: 100%;
+  }
+}
+
+/* ======================================================
+   TEMPORARY PAGES
+====================================================== */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 4vw;
+
+  font-size: clamp(70px, 10vw, 180px);
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .hero__content {
+    padding:
+      130px
+      30px
+      35px;
+  }
+
+  .hero__title {
+    font-size: clamp(72px, 12vw, 140px);
+  }
+
+  .intro {
+    padding:
+      100px
+      30px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+  /* NAVBAR */
+
+  .navbar {
+    height: 80px;
+
+    padding: 0 20px;
+  }
+
+  .navbar__menu {
+    display: none;
+  }
+
+  .navbar__mobile-button {
+    display: block;
+  }
+
+  /* HERO */
+
+  .hero {
+    height: 100svh;
+    min-height: 650px;
+  }
+
+  .hero__content {
+    padding:
+      110px
+      20px
+      25px;
+  }
+
+  .hero__eyebrow {
+    padding-bottom: 10px;
+
+    font-size: 8px;
+    letter-spacing: 0.14em;
+  }
+
+  .hero__title {
+    font-size: clamp(58px, 19vw, 110px);
+
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+  }
+
+  .hero__title-line--right {
+    align-self: flex-start;
+  }
+
+  .hero__bottom {
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 30px;
+
+    margin-top: 35px;
+
+    font-size: 9px;
+  }
+
+  .hero__categories {
+    gap: 2px;
+  }
+
+  .hero__explore {
+    display: none;
+  }
+
+  .hero__year {
+    font-size: 9px;
+  }
+
+  /* INTRO */
+
+  .intro {
+    min-height: 75vh;
+
+    padding:
+      90px
+      20px;
+  }
+
+  .section-label {
+    margin-bottom: 45px;
+
+    font-size: 9px;
+  }
+
+  .intro h2 {
+    font-size: clamp(40px, 12vw, 75px);
+
+    line-height: 0.98;
+  }
+
+  /* TEMP PAGES */
+
+  .page {
+    padding:
+      100px
+      20px;
+
+    font-size: clamp(55px, 18vw, 100px);
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 480px) {
+  .navbar__brand {
+    font-size: 15px;
+  }
+
+  .navbar__brand span {
+    font-size: 7px;
+  }
+
+  .hero__content {
+    padding-top: 100px;
+  }
+
+  .hero__eyebrow {
+    font-size: 7px;
+  }
+
+  .hero__title {
+    font-size: clamp(55px, 18vw, 86px);
+  }
+
+  .hero__bottom {
+    margin-top: 25px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION / ACCESSIBILITY
+====================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
