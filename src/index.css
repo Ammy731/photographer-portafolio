@@ -1494,6 +1494,387 @@ button {
   }
 }
 
+
+/* ======================================================
+   LIGHTBOX
+====================================================== */
+
+.lightbox {
+  position: fixed;
+
+  z-index: 1000;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  display: grid;
+
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+
+  padding:
+    28px
+    4vw
+    30px;
+
+  background:
+    rgba(
+      4,
+      4,
+      4,
+      0.98
+    );
+
+  color:
+    var(--white);
+}
+
+/* ======================================================
+   LIGHTBOX TOP
+====================================================== */
+
+.lightbox__top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+
+  border-bottom:
+    1px solid
+    var(--line);
+
+  font-size: 9px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.lightbox__counter {
+  display: flex;
+
+  gap: 7px;
+
+  color: var(--gray);
+}
+
+.lightbox__close {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--white);
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+.lightbox__close span {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+/* ======================================================
+   LIGHTBOX STAGE
+====================================================== */
+
+.lightbox__stage {
+  position: relative;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(0, 1fr)
+    70px;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding:
+    25px
+    0;
+}
+
+.lightbox__image-wrapper {
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__image-wrapper img {
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: calc(
+    100dvh - 210px
+  );
+
+  display: block;
+
+  object-fit: contain;
+}
+
+/* ======================================================
+   SIDE NAVIGATION
+====================================================== */
+
+.lightbox__side {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: var(--white);
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.lightbox__side:hover {
+  background:
+    var(--white);
+
+  color:
+    var(--black);
+}
+
+.lightbox__side--previous:hover {
+  transform:
+    translateX(-4px);
+}
+
+.lightbox__side--next:hover {
+  transform:
+    translateX(4px);
+}
+
+/* ======================================================
+   LIGHTBOX BOTTOM
+====================================================== */
+
+.lightbox__bottom {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  align-items: end;
+
+  gap: 40px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+.lightbox__meta {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 18px;
+}
+
+.lightbox__meta h2 {
+  font-size:
+    clamp(
+      24px,
+      2vw,
+      38px
+    );
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    -0.04em;
+}
+
+.lightbox__meta span {
+  color:
+    var(--gray);
+
+  font-size: 9px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.12em;
+}
+
+.lightbox__navigation {
+  display: flex;
+
+  gap: 25px;
+}
+
+.lightbox__navigation button {
+  border: 0;
+
+  padding: 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--gray);
+
+  cursor: pointer;
+
+  font-size: 9px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    0.12em;
+
+  transition:
+    color 0.3s ease;
+}
+
+.lightbox__navigation button:hover {
+  color:
+    var(--white);
+}
+
+/* ======================================================
+   BUTTON RESET FOR GALLERY MEDIA
+====================================================== */
+
+button.work-gallery__media {
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  color: inherit;
+
+  text-align: inherit;
+
+  font: inherit;
+}
+
+/* ======================================================
+   LIGHTBOX MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .lightbox {
+    padding:
+      20px
+      20px
+      22px;
+  }
+
+  .lightbox__stage {
+    grid-template-columns:
+      1fr;
+
+    padding:
+      20px
+      0;
+  }
+
+  /*
+   * Las flechas laterales desaparecen en móvil.
+   * Después añadiremos swipe.
+   */
+
+  .lightbox__side {
+    display: none;
+  }
+
+  .lightbox__image-wrapper img {
+    max-height:
+      calc(
+        100dvh - 190px
+      );
+  }
+
+  .lightbox__bottom {
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
+  }
+
+  .lightbox__meta {
+    justify-content:
+      space-between;
+
+    gap: 15px;
+  }
+
+  .lightbox__meta h2 {
+    font-size: 24px;
+  }
+
+  .lightbox__navigation {
+    justify-content:
+      space-between;
+  }
+}
+
 /* ======================================================
    TEMPORARY PAGES
 ====================================================== */

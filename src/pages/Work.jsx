@@ -1,11 +1,15 @@
 import {
+  useCallback,
   useRef,
   useState,
 } from "react";
 
 import GalleryItem from "../components/GalleryItem";
+import Lightbox from "../components/Lightbox";
 
-import { portfolioInfo } from "../data/portfolio";
+import {
+  portfolioInfo,
+} from "../data/portfolio";
 
 import {
   gsap,
@@ -14,43 +18,107 @@ import {
 
 function Work() {
   /*
-   * Categoría seleccionada actualmente.
-   *
-   * Comenzamos mostrando todas las fotografías.
+   * ======================================================
+   * ESTADOS
+   * ======================================================
    */
 
-  const [activeCategory, setActiveCategory] =
-    useState("All");
+  /*
+   * Categoría activa.
+   */
 
-  const container = useRef(null);
+  const [
+    activeCategory,
+    setActiveCategory,
+  ] = useState("All");
+
+  /*
+   * Índice de la fotografía abierta.
+   *
+   * null significa que el lightbox
+   * está cerrado.
+   */
+
+  const [
+    activeImageIndex,
+    setActiveImageIndex,
+  ] = useState(null);
+
+  const container =
+    useRef(null);
 
   const {
     workCategories,
     workGallery,
   } = portfolioInfo;
 
-  /*
-   * ======================================================
-   * FILTRADO
-   * ======================================================
-   */
+  /* ======================================================
+     FILTRADO
+  ====================================================== */
 
   const filteredWorks =
     activeCategory === "All"
       ? workGallery
       : workGallery.filter(
           (item) =>
-            item.category === activeCategory
+            item.category ===
+            activeCategory
         );
 
-  /*
-   * ======================================================
-   * ANIMACIÓN
-   *
-   * Se ejecuta nuevamente cuando cambia
-   * la categoría seleccionada.
-   * ======================================================
-   */
+  /* ======================================================
+     LIGHTBOX
+  ====================================================== */
+
+  const closeLightbox =
+    useCallback(() => {
+      setActiveImageIndex(null);
+    }, []);
+
+  const nextImage =
+    useCallback(() => {
+      setActiveImageIndex(
+        (currentIndex) => {
+          /*
+           * Cuando llegamos a la última fotografía
+           * volvemos a la primera.
+           */
+
+          if (
+            currentIndex ===
+            filteredWorks.length - 1
+          ) {
+            return 0;
+          }
+
+          return currentIndex + 1;
+        }
+      );
+    }, [filteredWorks.length]);
+
+  const previousImage =
+    useCallback(() => {
+      setActiveImageIndex(
+        (currentIndex) => {
+          /*
+           * Si estamos en la primera fotografía,
+           * saltamos a la última.
+           */
+
+          if (currentIndex === 0) {
+            return (
+              filteredWorks.length -
+              1
+            );
+          }
+
+          return currentIndex - 1;
+        }
+      );
+    }, [filteredWorks.length]);
+
+  /* ======================================================
+     ANIMACIÓN DE LA GALERÍA
+  ====================================================== */
 
   useGSAP(
     () => {
@@ -88,6 +156,23 @@ function Work() {
     }
   );
 
+  /* ======================================================
+     CAMBIO DE FILTRO
+  ====================================================== */
+
+  const handleCategoryChange = (
+    category
+  ) => {
+    /*
+     * Cerramos cualquier lightbox antes
+     * de modificar la colección.
+     */
+
+    setActiveImageIndex(null);
+
+    setActiveCategory(category);
+  };
+
   return (
     <main
       className="work-page"
@@ -95,7 +180,7 @@ function Work() {
     >
 
       {/* ==================================================
-          CABECERA
+          HERO
       ================================================== */}
 
       <section className="work-hero">
@@ -107,6 +192,7 @@ function Work() {
         <h1>
           SELECTED
           <br />
+
           <span>
             PHOTOGRAPHY.
           </span>
@@ -145,7 +231,6 @@ function Work() {
 
               <button
                 key={category}
-
                 type="button"
 
                 className={
@@ -161,7 +246,7 @@ function Work() {
                 }
 
                 onClick={() =>
-                  setActiveCategory(
+                  handleCategoryChange(
                     category
                   )
                 }
@@ -189,17 +274,49 @@ function Work() {
       <section className="work-gallery">
 
         {filteredWorks.map(
-          (item) => (
+          (item, index) => (
 
             <GalleryItem
               key={item.id}
               item={item}
+
+              onOpen={() =>
+                setActiveImageIndex(
+                  index
+                )
+              }
             />
 
           )
         )}
 
       </section>
+
+      {/* ==================================================
+          LIGHTBOX
+      ================================================== */}
+
+      {activeImageIndex !== null && (
+        <Lightbox
+          items={filteredWorks}
+
+          activeIndex={
+            activeImageIndex
+          }
+
+          onClose={
+            closeLightbox
+          }
+
+          onNext={
+            nextImage
+          }
+
+          onPrevious={
+            previousImage
+          }
+        />
+      )}
 
     </main>
   );

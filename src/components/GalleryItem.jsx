@@ -1,4 +1,7 @@
-function GalleryItem({ item }) {
+function GalleryItem({
+  item,
+  onOpen,
+}) {
   return (
     <article
       className={`
@@ -10,7 +13,12 @@ function GalleryItem({ item }) {
           FOTOGRAFÍA
       ================================================== */}
 
-      <div className="work-gallery__media">
+      <button
+        type="button"
+        className="work-gallery__media"
+        onClick={onOpen}
+        aria-label={`Open ${item.title}`}
+      >
 
         <img
           src={item.image}
@@ -18,17 +26,15 @@ function GalleryItem({ item }) {
           loading="lazy"
           decoding="async"
           style={{
-            objectPosition: item.position,
+            objectPosition:
+              item.position,
           }}
         />
 
-        {/* Overlay para interacción visual */}
-
         <div className="work-gallery__overlay" />
 
-        {/* Información que aparece sobre la foto */}
-
         <div className="work-gallery__hover">
+
           <span>
             {item.category}
           </span>
@@ -36,12 +42,13 @@ function GalleryItem({ item }) {
           <span>
             View
           </span>
+
         </div>
 
-      </div>
+      </button>
 
       {/* ==================================================
-          INFORMACIÓN INFERIOR
+          INFORMACIÓN
       ================================================== */}
 
       <div className="work-gallery__meta">
@@ -55,6 +62,7 @@ function GalleryItem({ item }) {
         </span>
 
       </div>
+
     </article>
   );
 }
