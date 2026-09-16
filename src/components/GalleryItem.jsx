@@ -9,59 +9,63 @@ function GalleryItem({
         work-gallery__item--${item.layout}
       `}
     >
-      {/* ==================================================
-          FOTOGRAFÍA
-      ================================================== */}
 
       <button
         type="button"
+
         className="work-gallery__media"
+
         onClick={onOpen}
-        aria-label={`Open ${item.title}`}
+
+        aria-label={
+          `Ver fotografía: ${item.title}`
+        }
       >
 
         <img
           src={item.image}
-          alt={`${item.title} - ${item.category}`}
+
+          alt={
+            `${item.title} — ${item.category}`
+          }
+
           loading="lazy"
+
           decoding="async"
+
           style={{
             objectPosition:
-              item.position,
+              item.position ||
+              "center",
           }}
         />
 
-        <div className="work-gallery__overlay" />
+        {/* Capa oscura utilizada solamente
+            durante el hover */}
 
-        <div className="work-gallery__hover">
+        <div
+          className="work-gallery__overlay"
+        />
+
+        {/* Información mínima.
+            El protagonista sigue siendo
+            la fotografía. */}
+
+        <div
+          className="work-gallery__hover"
+        >
 
           <span>
             {item.category}
           </span>
 
           <span>
-            View
+            Ver ↗
           </span>
 
         </div>
 
       </button>
-
-      {/* ==================================================
-          INFORMACIÓN
-      ================================================== */}
-
-      <div className="work-gallery__meta">
-
-        <h3>
-          {item.title}
-        </h3>
-
-        <span>
-          {item.category}
-        </span>
-
-      </div>
 
     </article>
   );

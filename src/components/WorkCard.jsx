@@ -26,7 +26,7 @@ function WorkCard({ work }) {
       <Link
         to="/work"
         className="work-card__media"
-        aria-label={`View ${work.title}`}
+        aria-label={`Ver ${work.title}`}
       >
         <div className="work-card__image-wrapper">
           <img
@@ -41,7 +41,7 @@ function WorkCard({ work }) {
           {/* Texto que aparece al pasar el mouse */}
 
           <span className="work-card__view">
-            View Work
+            Ver Trabajo
           </span>
         </div>
       </Link>

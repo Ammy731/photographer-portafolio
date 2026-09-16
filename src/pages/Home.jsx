@@ -4,11 +4,13 @@ import { portfolioInfo } from "../data/portfolio";
 import { gsap, useGSAP } from "../lib/gsap";
 
 import SelectedWork from "../components/SelectedWork";
+import FeaturedProjects
+  from "../components/FeaturedProjects";
 
 function Home() {
   const container = useRef(null);
 
-  const { photographer, hero, selectedWork } = portfolioInfo;
+  const { photographer, hero, selectedWork, featuredProjects, } = portfolioInfo;
 
   useGSAP(
     () => {
@@ -175,7 +177,7 @@ function Home() {
         <div className="hero__media">
           <img
             src={hero.image}
-            alt={`${photographer.name} sports photography`}
+            alt={`Fotografía deportiva de ${photographer.name}`}
           />
 
           <div className="hero__overlay" />
@@ -239,7 +241,7 @@ function Home() {
               className="hero__explore"
             >
               <span>
-                Explore
+                Ver trabajos
               </span>
 
               <span className="hero__arrow">
@@ -249,7 +251,7 @@ function Home() {
 
             <div className="hero__year">
               <span>
-                Portfolio
+                Portafolio
               </span>
 
               <span>
@@ -269,26 +271,27 @@ function Home() {
         id="selected-work"
         className="intro"
       >
-
         <span className="section-label">
-          Selected work
+          Trabajos seleccionados
         </span>
 
         <h2>
-          Stories built around
+          Fútbol, deportistas 
           <br />
 
           <em>
-            sport, people
+           y contenido visual
           </em>{" "}
 
-          and movement.
+          para marcas.
         </h2>
-
       </section>
 
       <SelectedWork works={selectedWork}/>
 
+      <FeaturedProjects
+        projects={featuredProjects}
+      />
     </main>
   );
 }

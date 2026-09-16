@@ -147,7 +147,7 @@ function SelectedWork({ works }) {
       <div className="selected-work__heading">
 
         <span>
-          Selected Work
+          Trabajos relacionados
         </span>
 
         <span>
@@ -182,7 +182,7 @@ function SelectedWork({ works }) {
           className="selected-work__all"
         >
           <span>
-            View all work
+            Ver portafolio
           </span>
 
           <span>
